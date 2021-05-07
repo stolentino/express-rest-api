@@ -8,18 +8,20 @@ const records = require('./records');
 });*/
 
 // Send a GET request to /quotes to READ a list of quotes
-app.get('/quotes', (req, res)=>{
+app.get('/quotes', async (req, res)=>{
   //res.json(data);
   //console.log(data);
-  const quotes = records.getQuotes();
+  const quotes = await records.getQuotes();
   res.json(quotes);
 });
 // Send a GET request to /quotes/:id to READ(view) a quote
-app.get('/quotes/:id', (req, res)=>{
+app.get('/quotes/:id', async (req, res)=>{
   //console.log(req.params.id);
   //const quote = data.quotes.find(quote => quote.id == req.params.id);
   //res.json(quote);
   //console.log(quote);
+  const quote = await records.getQuote(req.params.id);
+  res.json(quote);
 });
 // Send a POST request to /quotes to  CREATE a new quote 
 // Send a PUT request to /quotes/:id to UPDATE (edit) a quote
