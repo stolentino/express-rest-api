@@ -54,26 +54,6 @@ app.get('/quotes/:id', async (req, res)=>{
   }
 });
 // Send a POST request to /quotes to  CREATE a new quote 
-/*app.post('/quotes', async (req,res) =>{
-  try{
-    //throw new Error("Oh NOOOOO something went wrong!");
-    if(req.body.author && req.body.quote){
-      const quote = await records.createQuote({
-        quote: req.body.quote,
-        author: req.body.author
-      });
-      //res.status(201);
-      //res.json(quote);
-      res.status(201).json({message: err.message});
-    }else{
-      res.status(400).json({message: "Quote and author required."});
-    }
-  }catch(err){
-    //res.status(500);
-    //res.json({message: err.message});
-    res.status(500).json({message: err.message});
-  }
-});*/
 app.post('/quotes', asyncHandler( async (req, res)=>{
   if(req.body.author && req.body.quote){
     const quote = await records.createQuote({
